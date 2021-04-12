@@ -1,7 +1,15 @@
 import React from "react";
 
+import { GlobalStyle } from "../components/IndexLayout";
+import LoginLayout from "../components/LoginLayout";
+
 const login = () => {
-  return <div>로그인 페이지</div>;
+  return (
+    <>
+      <GlobalStyle />
+      <LoginLayout />
+    </>
+  );
 };
 
 export default login;

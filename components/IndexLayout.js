@@ -61,14 +61,14 @@ const IndexContainer = styled.div`
 
 const BannerStyle = styled.div`
   position: relative;
-  height: 100vh;
+  height: 100%;
 
   .test {
     position: absolute;
-    top: 0%;
+    top: 30%;
     left: 50%;
-    transform: translate(-50%, 0%);
-    font-size: 23rem;
+    transform: translate(-50%, -30%);
+    font-size: 20rem;
     z-index: 3;
     color: #fff;
   }
