@@ -80,8 +80,7 @@ const LoginLayout = () => {
   const onSubmitForm = useCallback(
     (e) => {
       e.preventDefault();
-      console.log(id, password);
-      dispatch(loginAction(id, password));
+      dispatch(loginAction(id));
     },
     [id, password]
   );

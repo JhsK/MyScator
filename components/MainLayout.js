@@ -2,7 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const MainLayout = () => {
-  return <div>메인 페이지</div>;
+  return (
+    <>
+      <div>page</div>
+      <div>test</div>
+    </>
+  );
 };
 
 export default MainLayout;

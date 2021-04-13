@@ -1,12 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-import { GlobalStyle } from "../components/IndexLayout";
 import LoginLayout from "../components/LoginLayout";
 
 const login = () => {
+  const isLoggedIn = useSelector((state) => state.isLoggedIn);
   return (
     <>
-      <LoginLayout />
+      {isLoggedIn ? <LoginLayout /> : alert("로그인을 통해 접근이 가능합니다")}
     </>
   );
 };
