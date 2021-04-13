@@ -1,7 +1,10 @@
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
-import { AiOutlineTwitter } from "react-icons/ai";
 import Link from "next/link";
+
+import { AiOutlineTwitter } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { loginAction } from "../reducers/index";
 
 const LoginStyle = styled.div`
   display: flex;
@@ -62,7 +65,7 @@ const LoginStyle = styled.div`
 `;
 
 const LoginLayout = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const dispatch = useDispatch();
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
@@ -77,8 +80,8 @@ const LoginLayout = () => {
   const onSubmitForm = useCallback(
     (e) => {
       e.preventDefault();
-      setIsLoggedIn(true);
-      console.log(isLoggedIn);
+      console.log(id, password);
+      dispatch(loginAction(id, password));
     },
     [id, password]
   );

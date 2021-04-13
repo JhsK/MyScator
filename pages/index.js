@@ -1,11 +1,10 @@
 import React from "react";
 
-import IndexLayout, { GlobalStyle } from "../components/IndexLayout";
+import IndexLayout from "../components/IndexLayout";
 
 const Index = () => {
   return (
     <>
-      <GlobalStyle />
       <IndexLayout />
     </>
   );

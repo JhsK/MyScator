@@ -6,7 +6,6 @@ import LoginLayout from "../components/LoginLayout";
 const login = () => {
   return (
     <>
-      <GlobalStyle />
       <LoginLayout />
     </>
   );
