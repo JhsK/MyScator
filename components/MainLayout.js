@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
+import MainMenu from "./MainMenu";
 const MainLayout = () => {
   return (
     <>
-      <div>page</div>
-      <div>test</div>
+      <MainMenu>Home</MainMenu>
     </>
   );
 };
