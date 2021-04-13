@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import { AiOutlineTwitter } from "react-icons/ai";
+import Link from "next/link";
 
 const LoginStyle = styled.div`
   display: flex;
@@ -39,30 +40,77 @@ const LoginStyle = styled.div`
       padding: 0.8rem 0;
       border: none;
       opacity: 0.5;
-      color: #fff;
       font-size: 0.9rem;
       margin-bottom: 1.5rem;
+      cursor: pointer;
+    }
+
+    & a {
+      color: #fff;
     }
   }
 
   .loginFooter {
     text-align: center;
     font-size: 0.9rem;
-    color: #1da1f2;
+    cursor: pointer;
+
+    & a {
+      color: #1da1f2;
+    }
   }
 `;
 
 const LoginLayout = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onChangeId = useCallback((e) => {
+    setId(e.target.value);
+  }, []);
+
+  const onChangePw = useCallback((e) => {
+    setPassword(e.target.value);
+  }, []);
+
+  const onSubmitForm = useCallback(
+    (e) => {
+      e.preventDefault();
+      setIsLoggedIn(true);
+      console.log(isLoggedIn);
+    },
+    [id, password]
+  );
+
   return (
     <LoginStyle>
       <AiOutlineTwitter className="twitterIcon" />
       <span className="loginTitle">트위터 로그인</span>
-      <form>
-        <input placeholder="휴대폰, 이메일, 사용자 아이디" type="text" />
-        <input placeholder="비밀번호" type="text" />
-        <button>로그인</button>
+      <form onSubmit={onSubmitForm}>
+        <input
+          placeholder="휴대폰, 이메일, 사용자 아이디"
+          type="text"
+          required
+          onChange={onChangeId}
+        />
+        <input
+          placeholder="비밀번호"
+          type="password"
+          required
+          onChange={onChangePw}
+        />
+        <button type="submit">
+          <Link href="/main">
+            <a>로그인</a>
+          </Link>
+        </button>
       </form>
-      <span className="loginFooter">비밀번호를 잊으셨나요? · 트위터 가입</span>
+      <span className="loginFooter">
+        <Link href="/join">
+          <a>비밀번호를 잊으셨나요? · 트위터 가입</a>
+        </Link>
+      </span>
     </LoginStyle>
   );
 };
