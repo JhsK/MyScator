@@ -1,11 +1,21 @@
 import React from "react";
-import styled from "styled-components";
 
 import MainMenu from "./MainMenu";
+import MainPostList from "./MainPostList";
+
 const MainLayout = () => {
   return (
     <>
       <MainMenu>Home</MainMenu>
+      <MainPostList />
+      <MainPostList />
+      <MainPostList />
+      <MainPostList />
+      <MainPostList />
+      <MainPostList />
+      <MainPostList />
+      <MainPostList />
+      <MainPostList />
     </>
   );
 };
