@@ -11,6 +11,8 @@ const Header = styled.div`
   border-bottom: 1px solid #dde7e5;
   width: 100%;
   padding: 0.7rem 1rem;
+  z-index: 3;
+  background-color: #fff;
 
   & img {
     width: 30px;
