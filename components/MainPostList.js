@@ -8,11 +8,13 @@ import { RiShareForward2Line } from "react-icons/ri";
 import TestAvatar from "../public/j.jpg";
 
 const PostListStyled = styled.div`
+  position: relative;
   display: flex;
   align-items: flex-flex-start;
   padding: 4.2rem 1rem 1rem 1rem;
   width: 100%;
   border-bottom: 1px solid #dde7e5;
+  z-index: -1;
 
   & img {
     width: 100px;
