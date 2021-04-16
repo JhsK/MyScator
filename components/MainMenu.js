@@ -24,7 +24,7 @@ const Header = styled.div`
     font-size: 1.2rem;
   }
 `;
-const MainMenu = ({ children } = Home) => {
+const MainMenu = ({ children }) => {
   return (
     <Header>
       <img src={AvatarImg} alt="avatar" />
