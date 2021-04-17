@@ -11,7 +11,7 @@ const PostListStyled = styled.div`
   position: relative;
   display: flex;
   align-items: flex-flex-start;
-  padding: 4.2rem 1rem 1rem 1rem;
+  padding: 1.3rem 1rem;
   width: 100%;
   border-bottom: 1px solid #dde7e5;
   z-index: -1;
@@ -46,16 +46,16 @@ const PostListFunction = styled.div`
   opacity: 0.6;
   justify-content: space-between;
   font-size: 1.1rem;
-  margin-top: 0.7rem;
+  margin-top: 0.9rem;
 
   .postIcon {
     cursor: pointer;
   }
 `;
 
-const MainPostList = () => {
+const MainPostList = ({ topPadding }) => {
   return (
-    <PostListStyled>
+    <PostListStyled topPadding>
       <img src={TestAvatar} alt="avatar" />
       <div className="textContainer">
         <span className="title">올더케이팝</span>
