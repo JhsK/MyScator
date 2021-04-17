@@ -4,11 +4,19 @@ const initialState = {
   user: null,
   loginData: {},
   isLoggedIn: false,
+  footerActive: 1,
 };
 
 export const loginAction = (data) => {
   return {
     type: "LOG_IN",
+    data,
+  };
+};
+
+export const footerAction = (data) => {
+  return {
+    type: "FOOTER_CHANGE",
     data,
   };
 };
@@ -22,6 +30,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: true,
         user: action.data,
+      };
+    case "FOOTER_CHANGE":
+      return {
+        ...state,
+        footerActive: action.data,
       };
     default:
       return state;

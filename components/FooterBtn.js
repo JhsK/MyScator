@@ -1,10 +1,11 @@
-import React from "react";
-import styled, { css } from "styled-components";
+import React, { useCallback } from "react";
+import styled from "styled-components";
+import { useDispatch } from "react-redux";
 
-import { useSelector } from "react-redux";
 import { BiHomeCircle } from "react-icons/bi";
 import { FiSearch, FiMail } from "react-icons/fi";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import { footerAction } from "../reducers/index";
 
 const Footer = styled.div`
   position: fixed;
@@ -18,20 +19,39 @@ const Footer = styled.div`
   padding: 0.8rem 0;
   background-color: #fff;
   z-index: 3;
-
-  .footerIcon {
-    cursor: pointer;
-    opacity: 0.5;
-  }
 `;
 
-const FooterBtn = () => {
+const FooterBtn = ({ data }) => {
+  const dispatch = useDispatch();
+  const footerOnclick = useCallback(
+    (e) => {
+      const btnId = Number(e.target.className.animVal);
+      dispatch(footerAction(btnId));
+    },
+    [data]
+  );
   return (
-    <Footer>
-      <BiHomeCircle className="footerIcon" />
-      <FiSearch className="footerIcon" />
-      <IoIosNotificationsOutline className="footerIcon" />
-      <FiMail className="footerIcon" />
+    <Footer data>
+      <BiHomeCircle
+        className="1"
+        style={data === 1 && { color: "#1da1f2" }}
+        onClick={footerOnclick}
+      />
+      <FiSearch
+        className="2"
+        style={data === 2 && { color: "#1da1f2" }}
+        onClick={footerOnclick}
+      />
+      <IoIosNotificationsOutline
+        className="3"
+        style={data === 3 && { color: "#1da1f2" }}
+        onClick={footerOnclick}
+      />
+      <FiMail
+        className="4"
+        style={data === 4 && { color: "#1da1f2" }}
+        onClick={footerOnclick}
+      />
     </Footer>
   );
 };
