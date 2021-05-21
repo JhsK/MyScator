@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { createGlobalStyle } from "styled-components";
 
 import MainMenu from "./MainMenu";
@@ -12,13 +13,16 @@ const HeaderPadding = createGlobalStyle`
 `;
 
 const MainLayout = () => {
+  const mainPosts = useSelector((state) => state.post.mainPosts);
+
   return (
     <>
       <HeaderPadding />
       <MainMenu>Home</MainMenu>
       <MainPostWrite />
-      <MainPostList />
-      <MainPostList />
+      {mainPosts.map((post) => (
+        <MainPostList key={post.id} post={post} />
+      ))}
     </>
   );
 };

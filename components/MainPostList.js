@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import { IoChatbubbleOutline } from "react-icons/io5";
 import { AiOutlineRetweet } from "react-icons/ai";
@@ -17,7 +17,7 @@ const PostListStyled = styled.div`
   z-index: -1;
 
   & img {
-    width: 100px;
+    width: 50px;
     height: 46px;
     border-radius: 30px;
     /* margin-right: 0.7rem; */
@@ -26,6 +26,7 @@ const PostListStyled = styled.div`
   .textContainer {
     font-size: 0.9rem;
     padding: 0 1rem;
+    width: 100%;
 
     .title {
       font-weight: bold;
@@ -42,32 +43,49 @@ const PostListStyled = styled.div`
 
 const PostListFunction = styled.div`
   display: flex;
+  width: 100%;
   align-items: center;
   opacity: 0.6;
   justify-content: space-between;
   font-size: 1.1rem;
   margin-top: 0.9rem;
 
-  .postIcon {
-    cursor: pointer;
+  .heartIcon {
+    color: ${(props) => props.color || "black"};
   }
 `;
 
-const MainPostList = ({ topPadding }) => {
+const MainPostList = ({ post }) => {
+  const [like, setLike] = useState(false);
+
+  // const onClickLike = useCallback(() => {
+  //   console.log("test");
+  //   setLike((prev) => !prev);
+  // }, []);
+
+  const onClickLike = () => {
+    console.log("test");
+  };
+
   return (
-    <PostListStyled topPadding>
+    <PostListStyled>
       <img src={TestAvatar} alt="avatar" />
       <div className="textContainer">
-        <span className="title">올더케이팝</span>
+        <span className="title">{post.User.nickname}</span>
         <span className="hour">1h</span>
-        <div className="content">
-          오직 주간아에서만 볼 수 있는 팬스티벌 아이돌을 향한 여러분의 찐 팬심을
-          100초 영상에 담아 보내주세요
-        </div>
+        <div className="content">{post.content}</div>
         <PostListFunction>
           <IoChatbubbleOutline className="postIcon" />
           <AiOutlineRetweet className="postIcon" />
-          <IoIosHeartEmpty className="postIcon" />
+          {like ? (
+            <IoIosHeartEmpty
+              className="heartIcon"
+              color="red"
+              onClick={onClickLike}
+            />
+          ) : (
+            <IoIosHeartEmpty className="heartIcon" onClick={onClickLike} />
+          )}
           <RiShareForward2Line className="postIcon" />
         </PostListFunction>
       </div>

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { addPost } from "../reducers/post";
 
 const StyledWirteForm = styled.form`
   border-bottom: 1px solid #dde7e5;
@@ -43,20 +45,57 @@ const StyledWirteForm = styled.form`
 `;
 
 const MainPostWrite = () => {
+  const { imagePaths, postAdded } = useSelector((state) => state.post);
+  const dispatch = useDispatch();
+  const [text, setText] = useState("");
+  const imageInput = useRef();
+  const textAreaValue = useRef();
+
+  const onClickimageUpload = useCallback(() => {
+    imageInput.current.click();
+  }, [imageInput.current]);
+
+  useEffect(() => {
+    if (postAdded) {
+      setText("");
+    }
+  }, [postAdded]);
+
+  const onChangeText = useCallback((e) => {
+    setText(e.target.value);
+  }, []);
+
+  const onSubmit = useCallback((e) => {
+    e.preventDefault();
+    dispatch(addPost);
+  }, []);
+
   return (
-    <StyledWirteForm encType="multipart/form-data">
+    <StyledWirteForm encType="multipart/form-data" onSubmit={onSubmit}>
       <textarea
         name="writeContent"
         wrap="physical"
         placeholder="오늘은 무슨일이?"
+        value={text}
+        onChange={onChangeText}
+        ref={textAreaValue}
       />
       <div className="submitContainer">
-        <input type="file" hidden />
-        <button className="imgBtn">업로드</button>
+        <input type="file" multiple hidden ref={imageInput} />
+        <button className="imgBtn" onClick={onClickimageUpload}>
+          업로드
+        </button>
         <button type="submit" className="TweetBtn">
           Tweet
         </button>
       </div>
+      {/* <div className="beforeImag">
+          {imagePaths.map((v) => {
+              return (
+                <img src=
+              )
+          })}
+      </div> */}
     </StyledWirteForm>
   );
 };
