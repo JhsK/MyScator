@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 
 import MainMenu from "./MainMenu";
 import MainPostList from "./MainPostList";
+import MainPostWrite from "./MainPostWrite";
 
 const HeaderPadding = createGlobalStyle`
   body {
@@ -15,13 +16,7 @@ const MainLayout = () => {
     <>
       <HeaderPadding />
       <MainMenu>Home</MainMenu>
-      <MainPostList />
-      <MainPostList />
-      <MainPostList />
-      <MainPostList />
-      <MainPostList />
-      <MainPostList />
-      <MainPostList />
+      <MainPostWrite />
       <MainPostList />
       <MainPostList />
     </>

@@ -10,7 +10,7 @@ import TestAvatar from "../public/j.jpg";
 const PostListStyled = styled.div`
   position: relative;
   display: flex;
-  align-items: flex-flex-start;
+  align-items: flex-start;
   padding: 1.3rem 1rem;
   width: 100%;
   border-bottom: 1px solid #dde7e5;
