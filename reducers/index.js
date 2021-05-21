@@ -21,6 +21,12 @@ export const footerAction = (data) => {
   };
 };
 
+export const logoutAction = () => {
+  return {
+    type: "LOG_OUT",
+  };
+};
+
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case HYDRATE:
@@ -35,6 +41,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         footerActive: action.data,
+      };
+    case "LOG_OUT":
+      return {
+        ...state,
+        isLoggedIn: false,
+        user: null,
       };
     default:
       return state;

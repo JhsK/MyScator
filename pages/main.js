@@ -8,7 +8,8 @@ const main = () => {
 
   return (
     <>
-      {isLoggedIn ? <MainLayout /> : alert("로그인을 통해 접근이 가능합니다")}
+      {/* {isLoggedIn ? <MainLayout /> : alert("로그인을 통해 접근이 가능합니다")} */}
+      <MainLayout />
     </>
   );
 };

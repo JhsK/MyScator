@@ -102,11 +102,7 @@ const LoginLayout = () => {
           required
           onChange={onChangePw}
         />
-        <button type="submit">
-          <Link href="/main">
-            <a>로그인</a>
-          </Link>
-        </button>
+        <button type="submit">로그인</button>
       </form>
       <span className="loginFooter">
         <Link href="/join">
