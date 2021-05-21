@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { AiOutlineTwitter } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { loginAction } from "../reducers/index";
+import { loginAction } from "../reducers/user";
 
 const LoginStyle = styled.div`
   display: flex;

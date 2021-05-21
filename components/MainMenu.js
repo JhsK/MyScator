@@ -30,7 +30,7 @@ const Header = styled.div`
 `;
 
 const MainMenu = ({ children }) => {
-  const footerActive = useSelector((state) => state.footerActive);
+  const footerActive = useSelector((state) => state.user.footerActive);
   return (
     <>
       <Header>

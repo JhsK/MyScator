@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { BiHomeCircle } from "react-icons/bi";
 import { FiSearch, FiMail } from "react-icons/fi";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import { footerAction } from "../reducers/index";
+import { footerAction } from "../reducers/user";
 
 const Footer = styled.div`
   position: fixed;
