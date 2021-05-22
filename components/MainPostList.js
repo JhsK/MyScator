@@ -7,6 +7,7 @@ import { RiShareForward2Line } from "react-icons/ri";
 
 import TestAvatar from "../public/avatar.png";
 import CommentForm from "./CommentForm";
+import PostImage from "./PostImage";
 
 const PostListStyled = styled.div`
   position: relative;
@@ -77,6 +78,7 @@ const MainPostList = ({ post }) => {
 
   return (
     <>
+      {post.Images[0] && <PostImage images={post.Images} />}
       <PostListStyled>
         <img src={TestAvatar} alt="avatar" />
         <div className="textContainer">

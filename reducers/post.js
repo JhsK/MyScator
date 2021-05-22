@@ -9,10 +9,13 @@ export const initialState = {
       content: "첫 번째 게시글",
       Images: [
         {
-          src: "https://github.com/JhsK/MyScator/blob/master/public/h.jpg",
+          src: "https://raw.githubusercontent.com/JhsK/MyScator/master/public/h.jpg",
         },
         {
-          src: "https://github.com/JhsK/MyScator/blob/master/public/j.jpg",
+          src: "https://raw.githubusercontent.com/JhsK/MyScator/master/public/j.jpg",
+        },
+        {
+          src: "https://raw.githubusercontent.com/JhsK/MyScator/master/public/j.jpg",
         },
       ],
       Comments: [
