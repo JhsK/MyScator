@@ -5,7 +5,8 @@ import { AiOutlineRetweet } from "react-icons/ai";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { RiShareForward2Line } from "react-icons/ri";
 
-import TestAvatar from "../public/j.jpg";
+import TestAvatar from "../public/avatar.png";
+import CommentForm from "./CommentForm";
 
 const PostListStyled = styled.div`
   position: relative;
@@ -49,20 +50,29 @@ const PostListFunction = styled.div`
   font-size: 1.1rem;
   margin-top: 0.5rem;
   border-bottom: 1px solid #dde7e5;
-  padding: 0rem 2rem 1rem 2rem;
+  padding: 0rem 1rem 1rem 1rem;
 
   .heartIcon {
     color: ${(props) => props.color || "black"};
   }
 `;
 
+const CommentCount = styled.div`
+  padding: 0rem 3rem 0.5rem 1rem;
+  border-bottom: 1px solid #dde7e5;
+  width: 100%;
+`;
+
 const MainPostList = ({ post }) => {
   const [like, setLike] = useState(false);
+  const [commentState, setCommentState] = useState(false);
 
-  const LikeOnclick = useCallback((e) => {
-    console.log(e);
-    console.log("test");
+  const onToggleLike = useCallback((e) => {
     setLike((prev) => !prev);
+  }, []);
+
+  const onToggleComment = useCallback(() => {
+    setCommentState((prev) => !prev);
   }, []);
 
   return (
@@ -76,19 +86,35 @@ const MainPostList = ({ post }) => {
         </div>
       </PostListStyled>
       <PostListFunction>
-        <IoChatbubbleOutline className="postIcon" />
-        <AiOutlineRetweet className="postIcon" onClick={LikeOnclick} />
+        <IoChatbubbleOutline className="postIcon" onClick={onToggleComment} />
+        <AiOutlineRetweet className="postIcon" />
         {like ? (
           <IoIosHeartEmpty
             className="heartIcon"
             color="red"
-            onClick={LikeOnclick}
+            onClick={onToggleLike}
           />
         ) : (
-          <IoIosHeartEmpty className="heartIcon" onClick={LikeOnclick} />
+          <IoIosHeartEmpty className="heartIcon" onClick={onToggleLike} />
         )}
         <RiShareForward2Line className="postIcon" />
       </PostListFunction>
+      {commentState && (
+        <div>
+          <CommentForm post={post} />
+          <CommentCount>{post.Comments.length}개의 댓글</CommentCount>
+          {post.Comments.map((v) => (
+            <PostListStyled>
+              <img src={TestAvatar} alt="avatar" />
+              <div className="textContainer">
+                <span className="title">{v.User.nickname}</span>
+                <span className="hour">1h</span>
+                <div className="content">{v.content}</div>
+              </div>
+            </PostListStyled>
+          ))}
+        </div>
+      )}
     </>
   );
 };

@@ -6,6 +6,10 @@ import Link from "next/link";
 import indexBanner from "../public/indexBanner.png";
 
 export const GlobalStyle = createGlobalStyle`
+    html, body, #__next {
+      width: 100%;
+      height: 100%;
+    }
     body {
         box-sizing: border-box;
         padding: 0;
@@ -27,6 +31,7 @@ export const GlobalStyle = createGlobalStyle`
           text-decoration: none;
         }
     }
+
 `;
 
 const IndexContainer = styled.div`
