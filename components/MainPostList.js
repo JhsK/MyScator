@@ -13,7 +13,6 @@ const PostListStyled = styled.div`
   align-items: flex-start;
   padding: 1.3rem 1rem;
   width: 100%;
-  border-bottom: 1px solid #dde7e5;
   z-index: -1;
 
   & img {
@@ -46,9 +45,11 @@ const PostListFunction = styled.div`
   width: 100%;
   align-items: center;
   opacity: 0.6;
-  justify-content: space-between;
+  justify-content: space-around;
   font-size: 1.1rem;
-  margin-top: 0.9rem;
+  margin-top: 0.5rem;
+  border-bottom: 1px solid #dde7e5;
+  padding: 0rem 2rem 1rem 2rem;
 
   .heartIcon {
     color: ${(props) => props.color || "black"};
@@ -58,38 +59,37 @@ const PostListFunction = styled.div`
 const MainPostList = ({ post }) => {
   const [like, setLike] = useState(false);
 
-  // const onClickLike = useCallback(() => {
-  //   console.log("test");
-  //   setLike((prev) => !prev);
-  // }, []);
-
-  const onClickLike = () => {
+  const LikeOnclick = useCallback((e) => {
+    console.log(e);
     console.log("test");
-  };
+    setLike((prev) => !prev);
+  }, []);
 
   return (
-    <PostListStyled>
-      <img src={TestAvatar} alt="avatar" />
-      <div className="textContainer">
-        <span className="title">{post.User.nickname}</span>
-        <span className="hour">1h</span>
-        <div className="content">{post.content}</div>
-        <PostListFunction>
-          <IoChatbubbleOutline className="postIcon" />
-          <AiOutlineRetweet className="postIcon" />
-          {like ? (
-            <IoIosHeartEmpty
-              className="heartIcon"
-              color="red"
-              onClick={onClickLike}
-            />
-          ) : (
-            <IoIosHeartEmpty className="heartIcon" onClick={onClickLike} />
-          )}
-          <RiShareForward2Line className="postIcon" />
-        </PostListFunction>
-      </div>
-    </PostListStyled>
+    <>
+      <PostListStyled>
+        <img src={TestAvatar} alt="avatar" />
+        <div className="textContainer">
+          <span className="title">{post.User.nickname}</span>
+          <span className="hour">1h</span>
+          <div className="content">{post.content}</div>
+        </div>
+      </PostListStyled>
+      <PostListFunction>
+        <IoChatbubbleOutline className="postIcon" />
+        <AiOutlineRetweet className="postIcon" onClick={LikeOnclick} />
+        {like ? (
+          <IoIosHeartEmpty
+            className="heartIcon"
+            color="red"
+            onClick={LikeOnclick}
+          />
+        ) : (
+          <IoIosHeartEmpty className="heartIcon" onClick={LikeOnclick} />
+        )}
+        <RiShareForward2Line className="postIcon" />
+      </PostListFunction>
+    </>
   );
 };
 

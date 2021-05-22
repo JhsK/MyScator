@@ -6,7 +6,7 @@ import { addPost } from "../reducers/post";
 const StyledWirteForm = styled.form`
   border-bottom: 1px solid #dde7e5;
   margin-bottom: 1rem;
-  padding: 1.3rem 1rem;
+  padding: 1.3rem 2rem;
   width: 100%;
 
   & textarea {
