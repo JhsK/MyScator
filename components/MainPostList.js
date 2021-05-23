@@ -8,6 +8,7 @@ import { RiShareForward2Line } from "react-icons/ri";
 import TestAvatar from "../public/avatar.png";
 import CommentForm from "./CommentForm";
 import PostImage from "./PostImage";
+import PostContent from "./PostContent";
 
 const PostListStyled = styled.div`
   position: relative;
@@ -84,7 +85,9 @@ const MainPostList = ({ post }) => {
         <div className="textContainer">
           <span className="title">{post.User.nickname}</span>
           <span className="hour">1h</span>
-          <div className="content">{post.content}</div>
+          <div className="content">
+            <PostContent postData={post.content} />
+          </div>
         </div>
       </PostListStyled>
       <PostListFunction>

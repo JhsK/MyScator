@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 
+import ImagesZoom from "./ImagesZoom/index";
 import { BsPlus } from "react-icons/bs";
 
 const PostImage = ({ images }) => {
@@ -8,6 +9,10 @@ const PostImage = ({ images }) => {
 
   const onZoom = useCallback(() => {
     setShowImages(true);
+  }, []);
+
+  const onClose = useCallback(() => {
+    setShowImages(false);
   }, []);
 
   if (images.length === 1) {
@@ -19,6 +24,7 @@ const PostImage = ({ images }) => {
           onClick={onZoom}
           height="300px"
         />
+        {showImages && <ImagesZoom images={images} onClose={onClose} />}
       </>
     );
   }
@@ -39,6 +45,7 @@ const PostImage = ({ images }) => {
             onClick={onZoom}
           />
         </div>
+        {showImages && <ImagesZoom images={images} onClose={onClose} />}
       </>
     );
   }
@@ -64,6 +71,7 @@ const PostImage = ({ images }) => {
           {images.length - 1}개의 사진 더보기
         </div>
       </div>
+      {showImages && <ImagesZoom images={images} onClose={onClose} />}
     </>
   );
 };

@@ -17,17 +17,17 @@ export const GlobalStyle = createGlobalStyle`
         background-color: #fff;
 
         a {
-          color: transparent;
+          color: #1da1f2;
           text-decoration: none;
         }
 
         a:active {
-          color: transparent;
+          color: #1da1f2;
           text-decoration: none;
         }
 
         a:hover {
-          color: transparent;
+          color: #1da1f2;
           text-decoration: none;
         }
     }
