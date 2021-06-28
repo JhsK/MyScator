@@ -1,23 +1,34 @@
-import { all, call, fork, take } from "redux-saga/effects";
+import { all, call, fork, put, take, takeLatest } from "redux-saga/effects";
 
-function logInAPI() {
-  return axios.post("/api/login");
+function logInAPI(data) {
+  return axios.post("/api/login", data);
 }
 
-function* logIn() {
-  yield call(logInAPI);
+function* logIn(action) {
+  try {
+    const reuslt = yield call(logInAPI, action.data);
+    yield put({
+      type: "LOG_IN_SUCCESS",
+      data: reuslt.data,
+    });
+  } catch (err) {
+    yield put({
+      type: "LOG_IN_FAILURE",
+      data: err.response.data,
+    });
+  }
 }
 
 function* watchLogin() {
-  yield take("LOG_IN", logIn);
+  yield takeLatest("LOG_IN_REQUEST", logIn);
 }
 
 function* watchLogOut() {
-  yield take("LOG_IN");
+  yield takeLatest("LOG_OUT_REQUEST");
 }
 
 function* watchAddPost() {
-  yield take("LOG_IN");
+  yield takeLateste("ADD_POST_REQIEST");
 }
 
 export default function* rootSaga() {
